@@ -20,12 +20,7 @@
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
                     <h1 align="center">HealthSECO</h1>
                 </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Hide" collapsible="true">
+                <p:layoutUnit position="west" size="245" collapsible="false">
                     <p:menu>
                         <p:submenu label="Registrations">
                             <p:menuitem value="Platforms" outcome="teste" />
@@ -65,6 +60,7 @@
                     <h3>General Sustainability Overview:</h3>
                     <h:outputText id="nome" value="#{consultaCert.retornaSust}"> </h:outputText>
                     <hr/>
+<!--Diversidade-->
                      <h2>Diversity Analisis</h2>
                     <br/>
                     Number of Group Users: <h:outputText id="nome" value="#{consultaCert.retornaDiversity.numberOfUsersGroups}"> </h:outputText>
@@ -88,6 +84,7 @@
                     <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity == null}" value="Health dimension not defined."> </h:outputText>
                     <br/>
                     <hr/>
+<!--Produtividade-->
                      <h2>Productivity Analisis</h2>
                     <br/>
                     Average time use of SECO (in hours per day): <h:outputText id="nome" value="#{consultaCert.retornaProductivity.averageTimeUse}"> </h:outputText>
@@ -129,6 +126,7 @@
                     <h:outputText id="nome" rendered="#{consultaCert.retornaProductivity == null}" value="Health dimension not defined."> </h:outputText>
                     <br/>
                     <hr/>
+<!--Criação de Nicho-->
                     <h2>Niche Creation Analisis</h2>
                     <br/>
                     Support different technologies?: <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.techName1 != consultaCert.retornaNicheCreation.techName2}" value="Yes"> </h:outputText>
@@ -152,6 +150,7 @@
                     <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation == null}" value="Health dimension not defined."> </h:outputText>
                     <br/>
                     <hr/>
+ <!--Panorama Geral-->
                     <h2>General Health Overview:</h2>
                     <h:outputText id="nome" value="#{consultaCert.retornaHeatlh}"> </h:outputText>
                 </p:layoutUnit>

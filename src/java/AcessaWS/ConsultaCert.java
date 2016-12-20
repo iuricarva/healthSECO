@@ -423,7 +423,7 @@ public class ConsultaCert {
                 nodes = document.getElementsByTagName("techName2");
                 this.model.setTechName2(nodes.item(0).getChildNodes().item(0).getNodeValue().replace("http://www.semanticweb.org/icarv/ontologies/2016/7/seco-4.owl#", ""));
                 nodes = document.getElementsByTagName("planForCollapse");
-                this.model.setEventName(nodes.item(0).getChildNodes().item(0).getNodeValue().replace("http://www.semanticweb.org/icarv/ontologies/2016/7/seco-4.owl#", ""));
+                this.model.setPlanForCollapse(nodes.item(0).getChildNodes().item(0).getNodeValue());
             if(this.getNamePlatform().equals(this.model.getName())){
                     return this.model;
                 }else{
