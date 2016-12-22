@@ -41,7 +41,11 @@
                     <hr/>
                     <br/>
                     <br/>
-                     <h:form>
+                    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                        <p:graphicImage name="/web/images/loader.gif"  />
+                    </p:dialog>
+                    <h:form>
                         <p:panelGrid columns="2">
                               <p:outputLabel for="id" value="Platform Name:" />
                               <p:inputText id="id" value="#{consultaCert.namePlatform}" />
@@ -59,9 +63,8 @@
                               <p:inputTextarea id="descricao"
                                    value="" />-->
 
-                              <p:commandButton  value="Analisys" ajax="false" action="analysisPage" onclick="this.form.target='_self'">
-                              </p:commandButton>
-
+                              <p:commandButton  value="Analisys" action="analysisPage" onclick="this.form.target='_self'"/>
+                              
                         </p:panelGrid>
                     </h:form>
                 </p:layoutUnit>
