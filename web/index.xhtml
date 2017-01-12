@@ -9,26 +9,22 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>HealthSECO</title>
+                <title>HEAL-ME</title>
             </f:facet>
         </h:head>
 
         <h:body style="padding: 0px; margin-top: 0px; margin-left: 0px; margin-right: 0px">
 
             <div style="background-color: lightgray; height: 30%; position: relative; float: none; border: solid; border-width: 1px; border-color: lightgray">
-                <div style="position: relative; float: contour">
-                    <h1><font color="white" style="text-shadow: 1px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black, 0px -1px 0px black;">  HealthSECO</font></h1>
-                </div>
-                
+                <div style="position: relative; float: contour; padding: 10px">
+                    <h1><font color="white" style="text-shadow: 1px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black, 0px -1px 0px black;">HEAL-ME</font></h1>
+                </div>                
             </div>
 
-            <div style="position: relative; float: left; border: solid; border-width: 1px; border-color: lightgray; width: 17.1%; height: 70%">
+            <div style="background-color: lightgray; position: relative; float: left; border: solid; border-width: 1px; border-color: lightgray; width: 17.1%; height: 550px">
                 <p:menu>
                     <p:submenu label="Registrations">
                         <p:menuitem value="Platforms" outcome="teste" />
-                        <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                        <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                        <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
                     </p:submenu>
                     <p:submenu label="View Analysis">
                             <p:menuitem value="Health Analysis" outcome="parameters" />
@@ -36,9 +32,24 @@
                 </p:menu>
             </div>
 
-            <div style="position: relative; float: left; width: 82.6%;  border: solid; border-width: 1px; border-color: lightgray; height: 70%">
-                <h2>Welcome to HealthSECO</h2>
+            <div style="position: relative; float: left; width: 82.6%;  border: solid; border-width: 1px; border-color: lightgray; height: 550px">
+                <h2 align="center">Welcome to HEAL-ME</h2>
                 <hr/>
+                <div style="padding: 10px">
+                    <p align="justify"> The Health dEfinition Archtecture ontoLogy-based froM sEco (HEAL-ME) aims is automatically analyze the health of 
+                        SECOs through rules applied to their data. With the objective of being adherent to the SECOs
+                        infrastructure, the developed architecture performs the semantic analysis of data coming
+                        from SECO, its products and its environment. Metrics are applied to these data, according 
+                        to each of the five health indicators. After the interpretation of this information, it is
+                        possible to evaluate the health level of the SECO platform, as well as its deficiencies.
+                    </p>
+                    <p align="justify">To automate the process of health analysis, the principle of semantic analysis
+                        was adopted. For this, an ontology was used that models the domain of SECO, its network of 
+                        collaborators, actors, applications aggregated to the platform and the keystone. By feeding
+                        this ontology with data collected from SECO and using SWRL rules, it is possible to present the
+                        health picture of the platform by evaluating its characteristics and indicators.
+                    </p>
+                </div>
                 <br/>
                 <br/>
             </div>

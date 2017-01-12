@@ -9,76 +9,112 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>HealthSECO</title>
+                <title>HEAL-ME</title>
             </f:facet>
         </h:head>
 
-        <h:body>
+        <h:body style="padding: 0px; margin-top: 0px; margin-left: 0px; margin-right: 0px">
 
-            <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    <h1 align="center">HealthSECO</h1>
-                </p:layoutUnit>
-                <p:layoutUnit position="west" size="245" collapsible="false">
-                    <p:menu>
-                        <p:submenu label="Registrations">
-                            <p:menuitem value="Platforms" outcome="teste" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-                        </p:submenu>
-                         <p:submenu label="Return">
-                            <p:menuitem value="Parameter of Analisis" outcome="parameters" />
-                            <p:menuitem value="Index Page" outcome="index" />
-                        </p:submenu>
-                    </p:menu>
-                                       
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    <h1 align="center"> Overview: </h1>
+             <div style="background-color: lightgray; height: 30%; position: relative; float: none; border: solid; border-width: 1px; border-color: lightgray">
+                <div style="position: relative; float: contour; padding: 10px">
+                    <h1><font color="white" style="text-shadow: 1px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black, 0px -1px 0px black;">  HEAL-ME</font></h1>
+                </div>
+            </div>
+            <div style="background-color: lightgray; position: relative; float: left; border: solid; border-width: 1px; border-color: lightgray; width: 17.1%; height: 550px">
+                <p:menu>
+                <p:submenu label="Registrations">
+                                <p:menuitem value="Platforms" outcome="teste" />
+                            </p:submenu>
+                             <p:submenu label="Return">
+                                <p:menuitem value="Parameter of Analisis" outcome="parameters" />
+                                <p:menuitem value="Index Page" outcome="index" />
+                            </p:submenu>
+                </p:menu>
+            </div>
+            
+            <div style="overflow-y: auto; position: relative; float: left; width: 82.6%;  border: solid; border-width: 1px; border-color: lightgray; height: 550px">                                     
+                <h1 align="center"> Overview: </h1>
                     <hr/>
                     <br/>
                     <br/>
+                <div style="padding: 10px">        
                     Platform: <h:outputText id="nome" value="#{consultaCert.namePlatform}"> </h:outputText>
                     <br/>
                     <br/>
+<!--Sustentabilidade-->
                     <h2>Sustainability Analisis</h2>
                     <br/>
-                    <h4>Heterogeinity Status:</h4>
-                    <h:outputText id="nome" value="#{consultaCert.retornaHet}"> </h:outputText>
-                    <h4>Regeneration Ability Status:</h4>
-                    <h:outputText id="nome" value="#{consultaCert.retornaRegAb}"> </h:outputText>
-                    <h4>Effort Balance Status:</h4>
-                    <h:outputText id="nome" value="#{consultaCert.retornaEfBal}"> </h:outputText>
-                    <h4>Expertise Balance Status:</h4>
+                    <hr/>
+                    <h4>Heterogeinity</h4>
+                    <br/>
+                    Does the Platform have distributed developers? <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameDeveloper1 != consultaCert.retornaHet.nameDeveloper2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameDeveloper1 == consultaCert.retornaHet.nameDeveloper2}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Does the Platform have differente types of network nodes? <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameNode1 != consultaCert.retornaHet.nameNode2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameNode1 == consultaCert.retornaHet.nameNode2}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Does the platform have semantically different services? <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameSupport1 != consultaCert.retornaHet.nameSupport2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaHet.nameSupport1 == consultaCert.retornaHet.nameSupport2}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <h4>Regeneration Ability</h4>
+                    <br/>
+                    Does the platform have new members? <h:outputText id="nome" rendered="#{consultaCert.retornaRegAb.nameDeveloper1 != null}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaRegAb.nameDeveloper1 == null}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Time the community worked together: <h:outputText id="nome" value="#{consultaCert.retornaRegAb.timeWorkTogether}."> </h:outputText>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <h4>Effort Balance</h4>
+                    <br/>
+                    Number of developer commits: <h:outputText id="nome" value="#{consultaCert.retornaEfBal.developerCommits}."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Number of worked hours per developer: <h:outputText id="nome" value="#{consultaCert.retornaEfBal.developerHoursWork}."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Number of releases: <h:outputText id="nome" value="#{consultaCert.retornaEfBal.numberOfReleases}."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Does the platform have active developers? <h:outputText id="nome" rendered="#{consultaCert.retornaEfBal.activeDeveloper == true}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaEfBal.activeDeveloper == false}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <h4>Expertise Balance</h4>
                     <h:outputText id="nome" value="#{consultaCert.retornaExpBal}"> </h:outputText>
-                    <h4>Visivility Status:</h4>
+                    <hr/>
+                    <h4>Visivility</h4>
                     <h:outputText id="nome" value="#{consultaCert.retornaVisib}"> </h:outputText>
                     <br/>
+                    <hr/>
                     <h3>General Sustainability Overview:</h3>
                     <h:outputText id="nome" value="#{consultaCert.retornaSust}"> </h:outputText>
                     <hr/>
 <!--Diversidade-->
-                     <h2>Diversity Analisis</h2>
+                    <h2>Diversity Analisis</h2>
                     <br/>
-                    Number of Group Users: <h:outputText id="nome" value="#{consultaCert.retornaDiversity.numberOfUsersGroups}"> </h:outputText>
-                    <br/>
-                    <br/>
-                    Have different developers?: <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameDeveloper1 != consultaCert.retornaDiversity.nameDeveloper2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameDeveloper1 == consultaCert.retornaDiversity.nameDeveloper2}" value="No"> </h:outputText>
+                    Number of Group Users: <h:outputText id="nome" value="#{consultaCert.retornaDiversity.numberOfUsersGroups}."> </h:outputText>
                     <br/>
                     <br/>
-                    Is supported by different hardware?: <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameHardwareSupport1 != consultaCert.retornaDiversity.nameHardwareSupport2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameHardwareSupport1 == consultaCert.retornaDiversity.nameHardwareSupport2}" value="No"> </h:outputText>
+                    Have different developers? <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameDeveloper1 != consultaCert.retornaDiversity.nameDeveloper2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameDeveloper1 == consultaCert.retornaDiversity.nameDeveloper2}" value="No."> </h:outputText>
                     <br/>
                     <br/>
-                    Support different technologies?: <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.techName1 != consultaCert.retornaDiversity.techName2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.techName1 == consultaCert.retornaDiversity.techName2}" value="No"> </h:outputText>
+                    Is supported by different hardware? <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameHardwareSupport1 != consultaCert.retornaDiversity.nameHardwareSupport2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.nameHardwareSupport1 == consultaCert.retornaDiversity.nameHardwareSupport2}" value="No."> </h:outputText>
                     <br/>
                     <br/>
-                    Have plan for collapse?: <h:outputText id="nome" value="#{consultaCert.retornaDiversity.planForCollapse}"> </h:outputText>
+                    Support different technologies? <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.techName1 != consultaCert.retornaDiversity.techName2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity.techName1 == consultaCert.retornaDiversity.techName2}" value="No."> </h:outputText>
+                    <br/>
+                    <br/>
+                    Have plan for collapse? <h:outputText id="nome" value="#{consultaCert.retornaDiversity.planForCollapse}."> </h:outputText>
                     <h3>General Diversity Overview:</h3>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity != null}" value="The data confirms the presence of this health dimension."> </h:outputText>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaDiversity == null}" value="Health dimension not defined."> </h:outputText>
@@ -87,40 +123,40 @@
 <!--Produtividade-->
                      <h2>Productivity Analisis</h2>
                     <br/>
-                    Average time use of SECO (in hours per day): <h:outputText id="nome" value="#{consultaCert.retornaProductivity.averageTimeUse}"> </h:outputText>
+                    Average time use of SECO (in hours per day): <h:outputText id="nome" value="#{consultaCert.retornaProductivity.averageTimeUse}."> </h:outputText>
                     <br/>
                     <br/>
-                    Average bug fix time (in hours): <h:outputText id="nome" value="#{consultaCert.retornaProductivity.bugFixTime}"> </h:outputText>
+                    Average bug fix time (in hours): <h:outputText id="nome" value="#{consultaCert.retornaProductivity.bugFixTime}."> </h:outputText>
                     <br/>
                     <br/>
-                    Name of last event: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.eventName}"> </h:outputText>
+                    Name of last event: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.eventName}."> </h:outputText>
                     <br/>
                     <br/>
-                    Date of occurred last event: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.occurredDate}"> </h:outputText>
+                    Date of occurred last event: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.occurredDate}."> </h:outputText>
                     <br/>
                     <br/>
-                    Last file produced: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.fileName}"> </h:outputText>
+                    Last file produced: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.fileName}."> </h:outputText>
                     <br/>
                     <br/>
-                    Last file creation date: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.creationData}"> </h:outputText>
+                    Last file creation date: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.creationData}."> </h:outputText>
                     <br/>
                     <br/>
-                    Number of KLOC added: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.KLOC}"> </h:outputText>
+                    Number of KLOC added: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.KLOC}."> </h:outputText>
                     <br/>
                     <br/>
-                    Name of last member included: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.newMemberName}"> </h:outputText>
+                    Name of last member included: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.newMemberName}."> </h:outputText>
                     <br/>
                     <br/>
-                    Number of exchanged messages per month: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.numMessages}"> </h:outputText>
+                    Number of exchanged messages per month: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.numMessages}."> </h:outputText>
                     <br/>
                     <br/>
-                    Number of active users: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.numberOfUser}"> </h:outputText>
+                    Number of active users: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.numberOfUser}."> </h:outputText>
                     <br/>
                     <br/>
-                    Name of last project started: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.projectName}"> </h:outputText>
+                    Name of last project started: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.projectName}."> </h:outputText>
                     <br/>
                     <br/>
-                    Start date of the last project: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.starData}"> </h:outputText>
+                    Start date of the last project: <h:outputText id="nome" value="#{consultaCert.retornaProductivity.starData}."> </h:outputText>
                     <h3>General Productivity Overview:</h3>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaProductivity != null}" value="The data confirms the presence of this health dimension."> </h:outputText>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaProductivity == null}" value="Health dimension not defined."> </h:outputText>
@@ -129,22 +165,22 @@
 <!--Criação de Nicho-->
                     <h2>Niche Creation Analisis</h2>
                     <br/>
-                    Support different technologies?: <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.techName1 != consultaCert.retornaNicheCreation.techName2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.techName1 == consultaCert.retornaNicheCreation.techName2}" value="No"> </h:outputText>
+                    Support different technologies? <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.techName1 != consultaCert.retornaNicheCreation.techName2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.techName1 == consultaCert.retornaNicheCreation.techName2}" value="No."> </h:outputText>
                     <br/>
                     <br/>
-                    Support different development technologies?: <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameDevTech1 != consultaCert.retornaNicheCreation.nameDevTech2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameDevTech1 == consultaCert.retornaNicheCreation.nameDevTech2}" value="No"> </h:outputText>
+                    Support different development technologies? <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameDevTech1 != consultaCert.retornaNicheCreation.nameDevTech2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameDevTech1 == consultaCert.retornaNicheCreation.nameDevTech2}" value="No."> </h:outputText>
                     <br/>
                     <br/>
-                    Support different applications?: <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameSupport1 != consultaCert.retornaNicheCreation.nameSupport2}" value="Yes"> </h:outputText>
-                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameSupport1 == consultaCert.retornaNicheCreation.nameSupport2}" value="No"> </h:outputText>
+                    Support different applications? <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameSupport1 != consultaCert.retornaNicheCreation.nameSupport2}" value="Yes."> </h:outputText>
+                    <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation.nameSupport1 == consultaCert.retornaNicheCreation.nameSupport2}" value="No."> </h:outputText>
                     <br/>
                     <br/>
-                    Support natural languages?: <h:outputText id="nome" value="#{consultaCert.retornaNicheCreation.supportNaturalLanguages}"> </h:outputText>
+                    Support natural languages? <h:outputText id="nome" value="#{consultaCert.retornaNicheCreation.supportNaturalLanguages}."> </h:outputText>
                     <br/>
                     <br/>
-                    Have documentation?: <h:outputText id="nome" value="#{consultaCert.retornaNicheCreation.haveDocumentation}"> </h:outputText>
+                    Have documentation? <h:outputText id="nome" value="#{consultaCert.retornaNicheCreation.haveDocumentation}."> </h:outputText>
                     <h3>General Niche Creation Overview:</h3>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation != null}" value="The data confirms the presence of this health dimension."> </h:outputText>
                     <h:outputText id="nome" rendered="#{consultaCert.retornaNicheCreation == null}" value="Health dimension not defined."> </h:outputText>
@@ -153,10 +189,8 @@
  <!--Panorama Geral-->
                     <h2>General Health Overview:</h2>
                     <h:outputText id="nome" value="#{consultaCert.retornaHeatlh}"> </h:outputText>
-                </p:layoutUnit>
-
-            </p:layout>
-
+                </div>    
+            </div>        
         </h:body>
 
     </f:view>

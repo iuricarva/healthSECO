@@ -112,7 +112,7 @@ public class ConsultaCert {
     }
 
     
-    public String getRetornaHet() throws ParserConfigurationException, SAXException{
+    public PlatformModel getRetornaHet() throws ParserConfigurationException, SAXException{
         try {    
             URL url = new URL("http://localhost:8080/WSSecoRestiful/webresources/WSSecoRestful/getheterogeneity");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -128,28 +128,55 @@ public class ConsultaCert {
             }
 
             conn.disconnect();
-            
-            if(output != null){
-                return "Characteristic defined.";
-            }else{
-                return "Missing characteristic";
-            }
+            this.model = new PlatformModel();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder;  
+            try{
+                String teste;
+                builder = factory.newDocumentBuilder();  
+                Document document = builder.parse( new InputSource( new StringReader( output ) ) );
+                NodeList nodes = document.getElementsByTagName("name");
+                this.model.setName(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameDeveloper1");
+                this.model.setNameDeveloper1(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameDeveloper2");
+                this.model.setNameDeveloper2(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameNode1");
+                this.model.setNameNode1(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameNode2");
+                this.model.setNameNode2(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameSupport1");
+                this.model.setNameSupport1(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameSupport2");
+                this.model.setNameSupport2(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                                          
+                                
+                if(this.getNamePlatform().equals(this.model.getName())){
+                    return this.model;
+                }else{
+                    return null;
+                }
+                      
+        } catch (Exception e) {  
+                e.printStackTrace();
+                //return e.getMessage();
+            } 
             
         } catch (MalformedURLException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
 	  } catch (IOException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
 	}
-        
-        
+        return null;
     }
-    public String getRetornaRegAb() throws ParserConfigurationException, SAXException{
+        
+    public PlatformModel getRetornaRegAb() throws ParserConfigurationException, SAXException{
         try {    
             URL url = new URL("http://localhost:8080/WSSecoRestiful/webresources/WSSecoRestful/getregenerationability");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -165,29 +192,48 @@ public class ConsultaCert {
             }
 
             conn.disconnect();
+            this.model = new PlatformModel();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder;  
+            try{
+                String teste;
+                builder = factory.newDocumentBuilder();  
+                Document document = builder.parse( new InputSource( new StringReader( output ) ) );
+                NodeList nodes = document.getElementsByTagName("name");
+                this.model.setName(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("nameDeveloper1");
+                this.model.setNameDeveloper1(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("timeWorkTogether");
+                this.model.setTimeWorkTogether(Integer.parseInt(nodes.item(0).getChildNodes().item(0).getNodeValue()));
+                
+                                          
+                                
+                if(this.getNamePlatform().equals(this.model.getName())){
+                    return this.model;
+                }else{
+                    return null;
+                }
+                      
+        } catch (Exception e) {  
+                e.printStackTrace();
+                //return e.getMessage();
+            } 
             
-             if(output != null){
-                return "Characteristic defined.";
-            }else{
-                return "Missing characteristic";
-            }
-             
         } catch (MalformedURLException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
 	  } catch (IOException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
-	  }
-        
-        
+	}
+        return null;
     }
     
-    public String getRetornaEfBal() throws ParserConfigurationException, SAXException{
+    public PlatformModel getRetornaEfBal() throws ParserConfigurationException, SAXException{
         try {    
             URL url = new URL("http://localhost:8080/WSSecoRestiful/webresources/WSSecoRestful/geteffortbalance");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -203,26 +249,47 @@ public class ConsultaCert {
             }
 
             conn.disconnect();
-            
-            if(output != null){
-                return "Characteristic defined.";
-            }else{
-                return "Missing characteristic";
-            }
+            this.model = new PlatformModel();
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+            DocumentBuilder builder;  
+            try{
+                String teste;
+                builder = factory.newDocumentBuilder();  
+                Document document = builder.parse( new InputSource( new StringReader( output ) ) );
+                NodeList nodes = document.getElementsByTagName("name");
+                this.model.setName(nodes.item(0).getChildNodes().item(0).getNodeValue());
+                nodes = document.getElementsByTagName("developerCommits");
+                this.model.setDeveloperCommits(Integer.parseInt(nodes.item(0).getChildNodes().item(0).getNodeValue()));
+                nodes = document.getElementsByTagName("developerHoursWork");
+                this.model.setDeveloperHoursWork(Integer.parseInt(nodes.item(0).getChildNodes().item(0).getNodeValue()));
+                nodes = document.getElementsByTagName("numberOfReleases");
+                this.model.setNumberOfReleases(Integer.parseInt(nodes.item(0).getChildNodes().item(0).getNodeValue()));
+                nodes = document.getElementsByTagName("activeDeveloper");
+                this.model.setActiveDeveloper(Boolean.parseBoolean(nodes.item(0).getChildNodes().item(0).getNodeValue()));                                         
+                                
+                if(this.getNamePlatform().equals(this.model.getName())){
+                    return this.model;
+                }else{
+                    return null;
+                }
+                      
+        } catch (Exception e) {  
+                e.printStackTrace();
+                //return e.getMessage();
+            } 
             
         } catch (MalformedURLException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
 	  } catch (IOException e) {
 
 		e.printStackTrace();
-                return e.getMessage();
+                //return e.getMessage();
 
 	}
-        
-        
+        return null;
     }
     
     public String getRetornaExpBal() throws ParserConfigurationException, SAXException{
